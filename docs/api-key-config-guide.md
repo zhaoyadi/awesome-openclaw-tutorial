@@ -614,4 +614,4 @@ openclaw config set models.providers.openai.apiKey "sk-yyy" --agent agent2
 ---
 
 **最后更新**: 2026-02-14  
-**适用版本**: OpenClaw 2026.2.9+
+**适用版本**: OpenClaw 2026.3.2+

@@ -2715,7 +2715,7 @@ A：可以，所有平台都支持手机端。飞书的移动端体验最好。
 }
 ```text
 **问题**：
-- ❌ OpenClaw 2026.2.9 的 bindings 功能不稳定
+- ❌ OpenClaw 2026.3.2 的 bindings 功能不稳定
 - ❌ peer.id 匹配经常失败
 - ❌ 所有群组都路由到同一个 agent
 - ❌ 需要 `/reset` + `/agent` 命令手动切换

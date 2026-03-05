@@ -2430,7 +2430,7 @@ openclaw update check
 openclaw update
 
 # 更新到指定版本
-openclaw update --version 2026.2.9
+openclaw update --version 2026.3.2
 
 # 回滚版本
 openclaw rollback

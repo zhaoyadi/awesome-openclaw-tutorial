@@ -1,0 +1,34 @@
+OpenClaw教程 - 最终交付文件清单
+生成时间: 2026-02-27 15:13:02
+
+========================================
+一、DOCX文件 (output-final/docx)
+========================================
+
+00-模板.docx                                          29K
+第01章-introduction.docx                              22K
+第02章-installation.docx                              28K
+第03章-advanced-deployment.docx                      1.1M
+第04章-maintenance-upgrade.docx                       35K
+第05章-quick-start.docx                              1.5M
+第06章-file-management.docx                          691K
+第07章-knowledge-management.docx                     1.3M
+第08章-schedule-management.docx                      392K
+第09章-automation-workflow.docx                       33K
+第10章-skills-extension.docx                         1.6M
+第11章-multi-platform-integration.docx                76K
+第12章-feishu-bot.docx                                28K
+第13章-wework-dingtalk-qq.docx                        23K
+第14章-api-integration.docx                          340K
+第15章-advanced-configuration.docx                   385K
+第16章-personal-productivity.docx                    3.1M
+第17章-advanced-automation.docx                      5.9M
+第18章-creative-applications.docx                    685K
+第19章-solo-entrepreneur-cases.docx                   43K
+
+========================================
+二、图片文件 (output-final/media)
+========================================
+
+图片总数: 82
+总大小: 17M

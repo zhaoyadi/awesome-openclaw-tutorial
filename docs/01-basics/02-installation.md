@@ -141,7 +141,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ```bash
 openclaw --version
 ```
-如果显示版本号（如 `2026.2.9`），说明安装成功！
+如果显示版本号（如 `2026.3.2`），说明安装成功！
 
 #### 第四步：初始化配置
 
@@ -717,7 +717,7 @@ openclaw onboard
    openclaw --version
    ```
    
-   如果显示版本号（如 `2026.2.9`），说明OpenClaw已预装成功。
+   如果显示版本号（如 `2026.3.2`），说明OpenClaw已预装成功。
 
 ![OpenClaw镜像](https://upload.maynor1024.live/file/1770742213992_02-openclaw-image.png)
 
@@ -2986,11 +2986,11 @@ openclaw config set gateway.port 18790
 
 > 🔄 **保持最新**：定期升级OpenClaw以获得新功能、性能优化和安全修复。
 
-> ⚠️ **重要提示**：目前推荐使用 **2026.2.9** 版本。2026.2.12 版本存在已知 bug（[Issue #15141](https://github.com/openclaw/openclaw/issues/15141)），会导致 heartbeat 和消息处理功能异常。
+> ⚠️ **重要提示**：目前推荐使用 **2026.3.2** 版本。2026.2.12 版本存在已知 bug（[Issue #15141](https://github.com/openclaw/openclaw/issues/15141)），会导致 heartbeat 和消息处理功能异常。
 
 ### 推荐版本
 
-**当前推荐版本**：2026.2.9
+**当前推荐版本**：2026.3.2
 
 **已知问题版本**：
 - ❌ 2026.2.12：Session 路径验证 bug，影响 heartbeat 和 Telegram/飞书消息处理
@@ -3062,11 +3062,11 @@ which openclaw  # 应该没有输出
 **第四步：安装新版本**
 
 ```bash
-# 安装推荐版本 2026.2.9（需要使用--force参数）
-npm install -g openclaw@2026.2.9 --force
+# 安装推荐版本 2026.3.2（需要使用--force参数）
+npm install -g openclaw@2026.3.2 --force
 ```
 > ⚠️ **版本选择说明**：  
-> - 推荐安装 2026.2.9 版本（稳定）
+> - 推荐安装 2026.3.2 版本（稳定）
 > - 避免安装 2026.2.12 版本（存在 session 路径 bug）
 > - 如果需要最新功能，等待 2026.2.13+ 版本修复后再升级
 
@@ -3109,7 +3109,7 @@ openclaw channels status
 ```
 成功的输出应该显示：
 ```
-2026.2.9
+2026.3.2
 
 Runtime: running (pid xxxxx, state active)
 RPC probe: ok
@@ -3130,7 +3130,7 @@ Dashboard: http://127.0.0.1:18789/
 
 ![升级完成验证](https://upload.maynor1024.live/file/1770949103492_image-20260213101814142.png)
 
-*图：升级完成，版本更新到2026.2.9*
+*图：升级完成，版本更新到2026.3.2*
 
 ### 方式二：官方脚本升级
 
@@ -3224,7 +3224,7 @@ npm error EEXIST: file already exists
 **解决方案**：
 ```bash
 # 使用--force参数强制覆盖
-npm install -g openclaw@2026.2.9 --force
+npm install -g openclaw@2026.3.2 --force
 ```
 #### 问题2：Gateway启动失败
 
@@ -3252,8 +3252,8 @@ current version is 2026.2.1-zh.3
 ```
 **解决方案**：
 ```bash
-# 升级到推荐版本 2026.2.9
-npm install -g openclaw@2026.2.9 --force
+# 升级到推荐版本 2026.3.2
+npm install -g openclaw@2026.3.2 --force
 openclaw doctor --fix
 ```
 #### 问题4：插件加载失败
@@ -3351,7 +3351,7 @@ openclaw gateway restart
 
 1. **使用--force参数**：
    ```bash
-   npm install -g openclaw@2026.2.9 --force
+   npm install -g openclaw@2026.3.2 --force
    ```
 
 2. **运行doctor修复**：
@@ -3420,17 +3420,17 @@ openclaw gateway restart
 
 **解决方案**：
 1. **不要升级到 2026.2.12**
-2. **如果已升级，回退到 2026.2.9**：
+2. **如果已升级，回退到 2026.3.2**：
    ```bash
    openclaw gateway stop
    npm uninstall -g openclaw
-   npm install -g openclaw@2026.2.9 --force
+   npm install -g openclaw@2026.3.2 --force
    openclaw doctor --fix
    openclaw gateway restart
    ```
 
 **推荐做法**：
-- 使用 2026.2.9 版本（当前最稳定）
+- 使用 2026.3.2 版本（当前最稳定）
 - 等待 2026.2.13+ 版本修复后再升级
 - 关注官方 GitHub Issues 获取最新信息
 
@@ -3532,13 +3532,13 @@ curl -s https://api.github.com/repos/openclaw/openclaw/releases/latest
    - Discord社区
    - 飞书群组
 
-### 升级案例：2026.2.1-zh.3 → 2026.2.9
+### 升级案例：2026.2.1-zh.3 → 2026.3.2
 
 以下是一次真实的升级案例，供参考。
 
 **升级背景**：
 - 原版本：2026.2.1-zh.3（中文版）
-- 目标版本：2026.2.9（推荐稳定版）
+- 目标版本：2026.3.2（推荐稳定版）
 - 升级原因：获取新功能和性能优化
 
 **升级过程**：
@@ -3560,7 +3560,7 @@ curl -s https://api.github.com/repos/openclaw/openclaw/releases/latest
 
 4. **安装新版本**：
    ```bash
-   npm install -g openclaw@2026.2.9 --force
+   npm install -g openclaw@2026.3.2 --force
    ```
 
 5. **修复配置**：
@@ -3575,7 +3575,7 @@ curl -s https://api.github.com/repos/openclaw/openclaw/releases/latest
 
 7. **验证升级**：
    ```bash
-   openclaw --version  # 显示：2026.2.9
+   openclaw --version  # 显示：2026.3.2
    openclaw gateway status  # 显示：running
    ```
 

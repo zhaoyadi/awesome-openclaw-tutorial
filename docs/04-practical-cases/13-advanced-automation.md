@@ -2458,7 +2458,7 @@ OpenClaw：✅ 研究完成！
 
 【基本信息】
 • 项目名称：OpenClaw
-• 最新版本：2026.2.9
+• 最新版本：2026.3.2
 • GitHub Stars：60,000+
 • 开发者：Peter Steinberger
 
