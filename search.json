@@ -5,10 +5,12 @@ layout: null
   {% for page in site.pages %}
     {% if page.url != "/search.json" and page.url != "/404.html" %}
     {
-      "title": "{{ page.title | escape }}",
+      "title": "{{ page.title | default: '无标题' | escape }}",
       "url": "{{ page.url | relative_url }}",
-      "excerpt": "{{ page.excerpt | default: page.content | strip_html | truncatewords: 30 | escape }}",
-      "category": "{{ page.path | split: '/' | first }}"
+      "excerpt": "{{ page.excerpt | default: page.content | strip_html | normalize_whitespace | truncatewords: 50 | escape }}",
+      "content": "{{ page.content | strip_html | normalize_whitespace | truncatewords: 100 | escape }}",
+      "category": "{{ page.path | split: '/' | first }}",
+      "keywords": "{{ page.title | default: '' | append: ' ' | append: page.excerpt | default: '' | append: ' ' | append: page.content | strip_html | truncatewords: 20 | escape }}"
     }{% unless forloop.last %},{% endunless %}
     {% endif %}
   {% endfor %}

@@ -5,12 +5,12 @@ title: 搜索
 
 <div class="search-container">
   <div class="search-box">
-    <input type="text" id="search-input" placeholder="搜索标题..." autocomplete="off">
+    <input type="text" id="search-input" placeholder="搜索标题、内容、关键词..." autocomplete="off">
     <button id="search-button">🔍 搜索</button>
   </div>
-  
+
   <div id="search-results">
-    <p class="search-hint">输入关键词搜索标题</p>
+    <p class="search-hint">💡 输入关键词搜索教程内容（支持标题、摘要、全文搜索）</p>
   </div>
 </div>
 
@@ -195,6 +195,13 @@ mark {
   let searchData;
   let loadAttempts = 0;
   const maxAttempts = 2;
+
+  // HTML转义函数（防止XSS）
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
   
   // 尝试加载搜索数据
   function loadSearchData() {
@@ -221,21 +228,23 @@ mark {
         
         searchData = data;
         
-        // 构建搜索索引（只搜索标题）
+        // 构建搜索索引（标题+摘要+内容）
         searchIndex = lunr(function() {
           this.ref('url');
-          this.field('title', { boost: 10 }); // 只索引标题字段，提高权重
-          
+          this.field('title', { boost: 10 });      // 标题权重最高
+          this.field('excerpt', { boost: 3 });     // 摘要权重次之
+          this.field('content', { boost: 1 });     // 内容权重较低
+
           // 添加中文分词支持
           this.pipeline.remove(lunr.stemmer);
           this.searchPipeline.remove(lunr.stemmer);
-          
+
           data.forEach(doc => {
             this.add(doc);
           });
         });
-        
-        console.log('✅ 搜索索引已加载，共 ' + data.length + ' 个页面（仅搜索标题）');
+
+        console.log('✅ 搜索索引已加载，共 ' + data.length + ' 个页面（标题+摘要+内容）');
         
         // 如果有URL参数，执行搜索
         const urlParams = new URLSearchParams(window.location.search);
@@ -298,36 +307,83 @@ mark {
       '<p class="loading">🔍 搜索中...</p>';
     
     try {
-      // 执行搜索（支持模糊匹配）
-      let results = searchIndex.search(query + '*'); // 添加通配符支持前缀匹配
-      
-      // 如果没有结果，尝试不使用通配符
+      // 执行搜索（多种策略）
+      let results = [];
+
+      // 策略1: 精确匹配
+      results = searchIndex.search(query);
+
+      // 策略2: 模糊匹配（通配符）
       if (results.length === 0) {
-        results = searchIndex.search(query);
+        results = searchIndex.search(query + '*');
       }
-      
-      // 如果还是没有结果，尝试按字符搜索（中文支持）
+
+      // 策略3: 中文分词搜索
       if (results.length === 0 && /[\u4e00-\u9fa5]/.test(query)) {
-        const chars = query.split('');
-        const charQuery = chars.map(c => c + '~1').join(' '); // 模糊匹配
-        results = searchIndex.search(charQuery);
+        // 将查询拆分成字符，每个字符都模糊匹配
+        const charQueries = [];
+        for (let i = 0; i < query.length; i++) {
+          const char = query[i];
+          if (/[\u4e00-\u9fa5]/.test(char)) {
+            charQueries.push(char);
+          }
+        }
+        if (charQueries.length > 0) {
+          const charQuery = charQueries.map(c => c + '~1').join(' ');
+          results = searchIndex.search(charQuery);
+        }
       }
-      
-      // 额外的标题匹配过滤（提高准确度）
-      const queryLower = query.toLowerCase();
-      const filteredResults = results.filter(result => {
-        const doc = searchData.find(d => d.url === result.ref);
-        if (!doc) return false;
-        const titleLower = (doc.title || '').toLowerCase();
-        return titleLower.includes(queryLower) || 
-               query.split('').every(char => titleLower.includes(char.toLowerCase()));
-      });
-      
-      const finalResults = filteredResults.length > 0 ? filteredResults : results;
+
+      // 策略4: 双字符组合（中文大词匹配）
+      if (results.length === 0 && /[\u4e00-\u9fa5]/.test(query) && query.length >= 2) {
+        const bigrams = [];
+        for (let i = 0; i < query.length - 1; i++) {
+          bigrams.push(query.substr(i, 2));
+        }
+        if (bigrams.length > 0) {
+          const bigramQuery = bigrams.map(b => b + '~2').join(' ');
+          const bigramResults = searchIndex.search(bigramQuery);
+          if (bigramResults.length > 0) {
+            results = bigramResults;
+          }
+        }
+      }
+
+      // 策略5: 内容全文匹配（兜底方案）
+      if (results.length === 0) {
+        const queryLower = query.toLowerCase();
+        const contentMatches = searchData.filter(doc => {
+          const title = (doc.title || '').toLowerCase();
+          const excerpt = (doc.excerpt || '').toLowerCase();
+          const content = (doc.content || '').toLowerCase();
+          return title.includes(queryLower) ||
+                 excerpt.includes(queryLower) ||
+                 content.includes(queryLower);
+        }).map(doc => ({ ref: doc.url, score: 1 }));
+        results = contentMatches;
+      }
+
+      const finalResults = results;
       
       if (finalResults.length === 0) {
-        document.getElementById('search-results').innerHTML = 
-          '<p class="no-results">😕 没有找到包含 "<strong>' + query + '</strong>" 的标题<br><br>💡 搜索提示：<br>• 尝试使用更简短的关键词<br>• 检查关键词拼写<br>• 尝试使用同义词<br><br><a href="/docs/search-guide.html" style="color: #159957;">查看搜索使用指南</a></p>';
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.className = 'no-results';
+        noResultsDiv.innerHTML = `
+          <p>😕 没有找到包含 "${escapeHtml(query)}" 的内容</p>
+          <p>💡 搜索技巧：</p>
+          <ul>
+            <li>尝试使用更简���的关键词</li>
+            <li>尝试同义词（如"安装"→"部署"）</li>
+            <li>搜索英文关键词（如"API"、"Skills"）</li>
+          </ul>
+          <p>
+            <a href="/">浏览教程目录</a> ·
+            <a href="/appendix/A-command-reference.html">命令速查表</a>
+          </p>
+        `;
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.innerHTML = '';
+        resultsContainer.appendChild(noResultsDiv);
         return;
       }
       
@@ -347,10 +403,26 @@ mark {
             title = title.replace(regex, '<mark>$1</mark>');
           });
           
-          // 显示摘要
+          // 显示摘要（优先显示包含关键词的内容片段）
           let excerpt = doc.excerpt || '';
-          if (excerpt.length > 150) {
-            excerpt = excerpt.substring(0, 150) + '...';
+          let content = doc.content || '';
+
+          // 尝试在内容中找到包含关键词的片段
+          const queryWords = query.split(/\s+/).filter(w => w.length > 0);
+          if (content && queryWords.length > 0) {
+            for (const word of queryWords) {
+              const index = content.indexOf(word);
+              if (index !== -1) {
+                const start = Math.max(0, index - 40);
+                const end = Math.min(content.length, index + word.length + 40);
+                excerpt = (start > 0 ? '...' : '') + content.substring(start, end) + (end < content.length ? '...' : '');
+                break;
+              }
+            }
+          }
+
+          if (excerpt.length > 200) {
+            excerpt = excerpt.substring(0, 200) + '...';
           }
           
           // 分类标签
