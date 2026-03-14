@@ -68,6 +68,94 @@
       --space-2xl: 3rem;
     }
 
+    /* ── 黑暗模式 ── */
+    [data-theme="dark"] {
+      /* 主色调 - 调整为更亮的蓝绿 */
+      --color-primary: #0d9a9a;
+      --color-primary-dark: #0a7a7a;
+      --color-primary-light: #10baba;
+
+      /* 强调色 - 保持珊瑚橙但调整亮度 */
+      --color-accent: #ff8a7a;
+      --color-accent-light: #ffb5a8;
+      --color-accent-dark: #ff6b5b;
+
+      /* 背景色 - 深色系 */
+      --color-bg: #0d1418;
+      --color-bg-alt: #151e24;
+      --color-bg-dark: #fafbfc;
+
+      /* 文本色 - 反转 */
+      --color-text: #e8eaed;
+      --color-text-secondary: #a8b8bd;
+      --color-text-muted: #6a7a7f;
+
+      /* 边框色 - 深色系 */
+      --color-border: #2a3a40;
+      --color-border-light: #1e2a30;
+
+      /* 阴影 - 深色系 */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ── 主题切换过渡 ── */
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── 主题切换按钮 ── */
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg);
+      border: 2px solid var(--color-border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
+    /* 图标动画 */
+    .theme-toggle .icon {
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .theme-toggle:hover .icon {
+      transform: rotate(20deg) scale(1.1);
+    }
+
+    /* 响应式调整 */
+    @media screen and (max-width: 42em) {
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+    }
+
     /* ── 全局样式 ── */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -978,6 +1066,11 @@
 </head>
 <body>
   <header class="page-header" role="banner">
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+      <span class="icon">🌙</span>
+    </button>
+
     <h1 class="project-name">🦞 {{ site.title }}</h1>
     <h2 class="project-tagline">{{ site.description }}</h2>
 
@@ -1014,5 +1107,57 @@
       </p>
     </footer>
   </main>
+
+  <script>
+    // ── 黑暗模式切换 ──
+    (function() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('.icon');
+
+      // 从 localStorage 读取主题偏好
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      // 设置初始主题
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeIcon.textContent = '☀️';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          themeIcon.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // 初始化主题
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (prefersDark) {
+        setTheme('dark');
+      }
+
+      // 主题切换事件
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+
+        // 添加旋转动画效果
+        themeIcon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          themeIcon.style.transform = '';
+        }, 500);
+      });
+
+      // 监听系统主题变化
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
