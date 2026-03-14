@@ -264,7 +264,7 @@ clawhub install community/skill-name
 
 ---
 
-**最后更新**: 2026年3月14日
+**最后更新**: 2026年3月13日
 **数据来源**: OpenClaw 官方统计、Skills.sh、SkillsMP、MCP 官方仓库
 
 

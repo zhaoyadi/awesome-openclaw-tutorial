@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![GitHub forks](https://img.shields.io/github/forks/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v2026.3.13-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
+[![Version](https://img.shields.io/badge/version-v2026.3.12-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![Status](https://img.shields.io/badge/status-完成-success.svg)](PROJECT-SUMMARY.md)
 [![CSDN](https://img.shields.io/badge/CSDN-博客-c32136?style=for-the-badge&logo=csdn)](https://blog.csdn.net/xianyu120)
 [![Bilibili](https://img.shields.io/badge/Bilibili-B站-fb7299?style=for-the-badge&logo=bilibili)](https://space.bilibili.com/399102586)
@@ -32,31 +32,50 @@
 
 ## 📢 2026年3月更新（v1.6）
 
-### 🚀版本更新至 v2026.3.13
+### 🚀 版本更新至 v2026.3.12
 
-**OpenClaw 最新版本 v2026.3.13 已发布！**（2026年3月14日）
+**OpenClaw 最新版本 v2026.3.12 已发布！**（2026年3月13日）
 
-#### 📱 移动端体验升级
-- **Android 聊天设置重做**：分组的设备/媒体设置，更紧凑的输入区与会话头部，移动端布局更密集
-- **iOS 首次启动引导优化**：新增欢迎页、连接步骤更清晰，不再自动弹出扫码页，并在 Connect 步骤提示 `/pair qr`
+#### 🎛️ Control UI 全面升级（Dashboard v2）
+- **模块化视图设计**：全新的概览、聊天、配置、Agent 和会话视图
+- **命令面板**：快速访问所有功能的命令面板（Command Palette）
+- **移动端优化**：新增底部标签栏，移动端体验大幅提升
+- **增强聊天工具**：斜杠命令、搜索、导出、置顶消息功能
 
-#### 🌐 浏览器能力增强（重要）
-- **支持“已登录的真实 Chrome 会话”接管**：新增官方 Chrome DevTools MCP attach 模式（适合直接用你已登录的浏览器做自动化）
-- **内置浏览器 profile**：新增 `profile="user"`（宿主机已登录浏览器）与 `profile="chrome-relay"`（扩展 Relay）
-- **browser.act 自动化增强**：支持批量 actions、selector 定位、延迟点击等（更稳更快）
+#### ⚡ 快速模式（Fast Mode）支持
+- **OpenAI GPT-5.4**：会话级快速切换，支持 `/fast`、TUI、Control UI 和 ACP
+- **Anthropic Claude**：`/fast` 切换映射到 API-key 的 `service_tier` 请求
+- **本地模型加速**：Ollama、vLLM、SGLang 迁移至提供商插件架构
 
-#### 🧊 Docker 部署：时区可控
-- 新增 `OPENCLAW_TZ`，docker-setup.sh 可固定 gateway/CLI 的 IANA 时区（不再完全继承宿主机）
+#### 🔌 Kubernetes 支持
+- **初始 K8s 安装路径**：包含原始清单和 Kind 设置
+- **企业级部署**：完整的 Kubernetes 部署文档
 
-#### 🐛关键修复
-- **Dashboard v2**：修复工具结果回传导致的聊天历史反复重载/卡顿（工具密集型任务更流畅）
-- **Gateway RPC**：未响应请求有超时回收，避免 pending promise 泄漏
-- **plugin-sdk**：打包策略调整，避免内存膨胀问题
-- **Ollama**：不再把 reasoning/thinking 字段串进最终回复文本（防止本地推理泄露到输出）
-- **Control UI**：明文 HTTP 场景下显式 token/password 不再在首次握手前丢失
+#### 🔒 安全增强（重要！）
+- **设备配对安全**：`/pair` 和 `openclaw qr` 使用短期引导令牌
+- **插件信任机制**：禁用隐式工作区插件自动加载，需要明确信任决定
+- **命令权限控制**：`/config` 和 `/debug` 要求发送者所有权
+- **网关认证强化**：清除共享令牌 WebSocket 连接的未绑定客户端声明
 
-> 注：以上为 v2026.3.13 release notes 摘要（来源：GitHub Releases）。
+#### 🐛 重要修复
+- **Kimi Coding**：恢复以原生 Anthropic 格式发送工具
+- **TUI**：修复重复的助手回复渲染问题
+- **macOS**：添加缺失的 `NSRemindersUsageDescription`
+- **Windows**：原生更新使用 npm 更新路径
+- **Mattermost**：修复块流激活时的重复消息传递
 
+**升级示例**（从 v2026.3.2 升级到 v2026.3.12）：
+
+![](https://upload.maynor1024.live/file/1773461284985_image-20260314120751746.png)
+
+升级命令：
+```bash
+# 更新OpenClaw
+openclaw update
+
+# 重启Gateway
+openclaw gateway restart
+```
 
 ### ✨ 新增附录O：国产Claw产品选购指南
 
@@ -90,7 +109,7 @@
 | **附录数量** | 14个（A-N） | 15个（A-O）✨ |
 | **总字数** | 41.8万字 | 42.3万字 |
 | **章节数** | 15章+14附录+1安全指南 | 15章+15附录+1安全指南 |
-| **适用版本** | v2026.3.7 | v2026.3.13 |
+| **适用版本** | v2026.3.7 | v2026.3.12 |
 
 👉 **[查看公众号文章](公众号文章-2026年3月更新.md)** 了解详细更新内容
 
@@ -836,14 +855,15 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 ## 🆕 OpenClaw 最新版本
 
-**当前最新版本**：openclaw2026.3.13（2026.3.14）
+**当前最新版本**：openclaw 2026.3.12（2026.3.12）
 
-**2026.3.13重点更新（建议关注）**：
-- 📱 **移动端体验升级** - Android 聊天设置重做；iOS 首次启动欢迎页/连接流程优化（Connect 步骤提示 `/pair qr`）
-- 🌐 **浏览器能力增强** - 支持 Chrome DevTools MCP attach（接管已登录 Chrome）；新增 `profile="user"` / `profile="chrome-relay"`；`browser.act` 支持批量 actions、selector、延迟点击
-- 🧊 **Docker 时区可控** - 新增 `OPENCLAW_TZ`，容器可固定 IANA 时区
-- 🐛 **关键修复** - Dashboard v2 工具结果回传卡顿、Gateway RPC pending 泄漏回收、plugin-sdk 打包内存问题、Ollama reasoning 不再泄露到最终文本
-
+**2026.3.12 重点更新（建议关注）**：
+- 🎛️ **Control UI 全面升级** - 模块化视图设计、命令面板、移动端底部标签栏
+- ⚡ **Fast Mode 支持** - OpenAI GPT-5.4、Anthropic Claude、本地模型加速
+- 🔌 **提供商插件架构** - Ollama/vLLM/SGLang 迁移至插件架构
+- ☸️ **Kubernetes 支持** - 企业级 K8s 部署方案
+- 🔒 **安全增强** - 设备配对安全、插件信任机制、命令权限控制
+- 🐛 **重要修复** - Kimi Coding、TUI、macOS、Windows、Mattermost 修复
 
 **历史版本重要更新**：
 - ✅ **v2026.3.8**：新增备份命令、ACP 增强、Brave 搜索模式
@@ -888,19 +908,19 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 ---
 
-**最后更新**：2026年3月14日
+**最后更新**：2026年3月13日
 **教程版本**：v1.6（持续更新）
 **书名**：一本书玩转OpenClaw：超级个体实战指南
 **副标题**：从零开始打造你的AI工作助手
 **总字数**：423,000字（正文267,000字 + 附录156,000字）
 **章节数**：15章正文 + 15个附录 + 1个安全指南
-**适用OpenClaw版本**：2026.3.13（推荐最新版）
+**适用OpenClaw版本**：2026.3.12（推荐最新版）
 
 **本次更新亮点**：
 - ✅ 新增附录O：国产Claw产品选购指南（450行）
 - ✅ Skills生态大爆发：从1800+到492,000+
 - ✅ 安全指南升级：ACP、备份工具、ClawJacked漏洞等
-- ✅ 更新统计数据和版本信息（v2026.3.13）
+- ✅ 更新统计数据和版本信息（v2026.3.12）
 - ✅ 教程总字数达42.3万字
 
 👉 [查看详细改进内容](IMPROVEMENTS-SUMMARY.md)

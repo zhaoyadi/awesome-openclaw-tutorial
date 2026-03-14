@@ -10,7 +10,7 @@ title: 首页
 [![GitHub stars](https://img.shields.io/github/stars/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![GitHub forks](https://img.shields.io/github/forks/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v2026.3.13-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
+[![Version](https://img.shields.io/badge/version-v2026.3.12-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![Status](https://img.shields.io/badge/status-完成-success.svg)](PROJECT-SUMMARY.md)
 [![CSDN](https://img.shields.io/badge/CSDN-博客-c32136?style=for-the-badge&logo=csdn)](https://blog.csdn.net/xianyu120)
 [![Bilibili](https://img.shields.io/badge/Bilibili-B站-fb7299?style=for-the-badge&logo=bilibili)](https://space.bilibili.com/399102586)
@@ -39,9 +39,9 @@ title: 首页
 
 ## 🚨 版本升级重要提示
 
-### 🎉 2026.3.13 版本：重大功能更新
+### 🎉 2026.3.12 版本：重大功能更新
 
-**OpenClaw2026.3.13 已发布！**（2026年3月14日）
+**OpenClaw 2026.3.12 已发布！**（2026年3月13日）
 
 #### 🎛️ Control UI 全面升级（Dashboard v2）
 - **模块化视图设计**：全新的概览、聊天、配置、Agent 和会话视图
@@ -164,7 +164,7 @@ openclaw gateway restart
 
 ## 📖 关于本教程
 
-> ⚠️ **版本说明**：本教程基于 **OpenClaw2026.3.13**版本编写（已验证）。
+> ⚠️ **版本说明**：本教程基于 **OpenClaw 2026.3.12**版本编写（已验证）。
 
 > 💡 **重要前提**：OpenClaw 预装了 **49 个内置技能（Skills）**，开箱即用，无需额外安装即可完成本教程大部分演示。
 
@@ -317,8 +317,8 @@ openclaw gateway restart
   <p>🚀 一个人 + OpenClaw = 无限可能 🚀</p>
 </div>
 
-**最后更新**：2026年3月14日
+**最后更新**：2026年3月13日
 **教程版本**：v1.6
 **总字数**：423,000字（正文267,000字 + 附录156,000字）
 **章节数**：15章正文 + 15个附录 + 1个安全指南
-**适用 OpenClaw 版本**：2026.3.13（推荐最新版）
+**适用 OpenClaw 版本**：2026.3.12（推荐最新版）
