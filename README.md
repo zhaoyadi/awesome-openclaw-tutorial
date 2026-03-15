@@ -112,13 +112,13 @@ openclaw gateway restart
 - 🔌 **MCP生态**：1,800+ Servers，Anthropic推出的开放标准
 - 🤖 **InStreet实例街**：全球首个AI Agent社交网络（字节出品，3天17,000+Agent）
 
-### 🔒 安全指南升级（v2026.3.8同步）
+### 🔒 安全指南全面升级
 
-- ✅ **ACP身份验证**：完整审计追踪、增强验证、权限管理
-- 💾 **原生备份工具**：`openclaw backup create/verify/restore`
-- ⚠️ **ClawJacked漏洞**：零点击RCE攻击，立即升级到v2026.2.26+
-- 🚨 **工信部预警**：AI Agent供应链安全风险提示
-- 🛡️ **恶意npm包攻击**：识别伪装Skills的防护措施
+- ✅ **威胁全景分析**：27万+暴露实例、1184+恶意Skills、258个已修复CVE漏洞
+- 🔒 **七步防护体系**：升级、认证、隔离、权限、审计、DM策略、Docker沙箱
+- 🚨 **安全事件时间线**：ClawHavoc、GhostClaw、CVE-2026-25253等重大事件
+- 🛡️ **国内安全态势**：工信部/CNCERT官方预警、腾讯/360安全产品矩阵
+- 📊 **审计工具汇总**：内置工具+社区工具+官方信息来源
 
 ### 📊 教程规模扩大
 
@@ -545,12 +545,13 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 - 💰 成本优化：国产模型组合，月费用降至5-30元
 - ⚡ 性能调优：响应速度提升3倍
 
-#### [安全指南：安全模型与已知事件](docs/03-advanced/99-security-guide.md)
-> 了解OpenClaw的安全机制、已知安全事件和最佳实践
-- 🔒 安全模型：DM配对保护、群组沙箱、工具访问控制
-- 🚨 已知安全事件：CVE-2026-25253、ClawHavoc攻击、Anthropic封杀、谷歌封号
-- 🛡️ Skills安全：供应链攻击防护、安全审查最佳实践
-- ✅ 安全最佳实践：API密钥安全、数据隐私、网络安全、审计日志
+#### [安全指南：从威胁认知到工程化加固](docs/03-advanced/99-security-guide.md)
+> 全面了解OpenClaw安全风险，掌握七步防护体系
+- ⚠️ **风险认知**：为什么OpenClaw的安全风险与众不同
+- 🚨 **事件全景**：CVE漏洞、供应链投毒、1184+恶意Skills、27万+暴露实例
+- 🔒 **防护体系**：七步安全加固实操（升级、认证、隔离、权限、审计）
+- 🛡️ **国内态势**：工信部/CNCERT预警、腾讯/360安全产品矩阵
+- 📊 **工具资源**：安全审计命令、社区工具、官方信息来源
 
 ---
 
@@ -630,7 +631,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 | 附录 | 内容 |
 |------|------|
-| [安全指南](docs/03-advanced/99-security-guide.md) | 安全模型、已知安全事件、Skills安全与最佳实践 |
+| [安全指南](docs/03-advanced/99-security-guide.md) | 从威胁认知到工程化加固：27万+暴露实例、1184+恶意Skills、七步防护体系 |
 
 
 
