@@ -1,351 +1,423 @@
 # 附录B 常用Skills清单
 
-> 💡 **本附录目标**：提供OpenClaw常用Skills的详细清单，包括官方Skills和社区热门Skills，帮助你快速找到需要的功能。
+> 💡 **本附录目标**：提供OpenClaw常用Skills的详细清单，所有Skills均经过实战验证，确保可以正常安装使用。
 
 ## 📋 目录
 
-- B.1 官方Skills
-- B.2 社区热门Skills
-- B.3 Skills评价和推荐
+- B.0 三大必装Skills（安全与智能基础）
+- B.1 核心必装Skills（Top 10）
+- B.2 平台集成类Skills
+- B.3 开发工具类Skills
+- B.4 自动化类Skills
+- B.5 百度千帆系列Skills
+- B.6 Skills组合推荐
 
 ---
 
-## B.1 官方Skills
+## B.0 三大必装Skills（安全与智能基础）⚡
 
-### B.1.1 系统集成类
+> ⚠️ **重要提示**：以下是使用OpenClaw时**最先应该安装**的三个Skills，它们提供了安全保护和智能增强，是所有其他Skills的基础。
 
-#### 📸 peekaboo（截图工具）
+### 1. Skill Vetter——Skills安全审查工具 🛡️
 
-**功能**：
-- 截取全屏
-- 截取窗口
-- 截取区域
-- 延迟截图
+**核心作用**：
+在安装任何Skill之前，先帮你把那个Skill审查一遍，生成安全报告，告诉你这东西能不能装。类似于电脑时代的杀毒软件或安全管家。
+
+**功能特点**：
+- ✅ 自动扫描Skill代码，检测潜在恶意逻辑
+- ✅ 分析Skill权限要求，识别过度权限申请
+- ✅ 检查Skill依赖项，发现不安全的第三方库
+- ✅ 生成详细的安全报告，给出安装建议
+- ✅ 防止ClawHavoc类供应链攻击
 
 **安装**：
 ```bash
-clawhub install peekaboo
+# 通过ClawHub安装
+clawhub install skill-vetter
+
+# 或直接使用URL
+帮我安装这个Skill：https://clawhub.ai/spclaudehome/skill-vetter
 ```
 
 **使用示例**：
 ```
-"帮我截个全屏"
-"帮我截取Chrome窗口"
-"帮我5秒后截个图"
+你：帮我检查一下nano-banana-pro这个Skill是否安全
+
+Skill Vetter：正在扫描 nano-banana-pro...
+✅ 代码审查通过
+✅ 权限要求正常
+✅ 依赖项安全
+✅ 无恶意行为
+
+安全评分：9.5/10
+建议：可以安全安装
 ```
+
+**推荐指数**：⭐⭐⭐⭐⭐（必装！必装！必装！）
+
+**为什么是必装第一优先级**：
+> "任何朋友问我怎么把控安全问题，或者要装什么skills，我永远推荐的第一个必备的Skills。大家绝对不要迷信各种所谓的下载量。一定要清楚，下载量大 ≠ 非恶意。所以，进行一遍安全审查，是绝对有必要的。"
+
+**核心价值**：
+- 🛡️ **安全第一**：防止恶意Skill破坏系统
+- 🔍 **全面审查**：从代码到权限的完整检查
+- 📊 **清晰报告**：易懂的评分和建议
+- ⚡ **快速响应**：秒级完成扫描
+- 🎯 **精准识别**：基于最新威胁情报
+
+**为什么不能只看下载量**：
+```
+❌ 错误认知：下载量高 = 安全
+   - 攻击者可以刷下载量
+   - 恶意Skill可能伪装成热门工具
+   - 早期用户可能未发现问题
+
+✅ 正确做法：使用Skill Vetter审查
+   - 基于代码实际分析
+   - 不受人气影响
+   - 客观的安全评估
+```
+
+**使用建议**：
+1. ✅ 安装OpenClaw后第一个安装的Skill
+2. ✅ 安装任何其他Skill前先审查
+3. ✅ 定期扫描已安装的Skills
+4. ✅ 关注安全评分更新
+5. ✅ 分享安全报告给社区
+
+**ClawHub地址**：https://clawhub.ai/spclaudehome/skill-vetter
+
+---
+
+### 2. find-skills——智能技能发现 🔍
+
+**核心作用**：
+当OpenClaw无法完成某个任务时，自动搜索并推荐合适的Skills，让AI帮你找工具。
+
+**功能特点**：
+- ✅ 自动识别任务需求
+- ✅ 搜索ClawHub上的相关Skills
+- ✅ 推荐最匹配的Skills
+- ✅ 提供安装建议
+- ✅ 节省手动搜索时间
+
+**安装**：
+```bash
+npx clawhub@latest install find-skills
+```
+
+**使用示例**：
+```
+你：帮我把这个视频转成GIF动图
+
+OpenClaw：[检测到无法完成]
+正在搜索相关Skills...
+找到了：video-to-gif
+评分：4.8/5.0
+功能：视频转GIF，支持格式转换、压缩、调帧率
+是否安装？[Y/n]
+```
+
+**推荐指数**：⭐⭐⭐⭐⭐（必装！）
+
+**GitHub**: https://github.com/vercel-labs/skills/tree/main/skills/find-skills
+
+---
+
+### 3. self-improving-agent（原ProactiveAgent）——自我改进与主动预测 🧠
+
+**核心作用**：
+具备自我反思、自我批评、自我学习和自我组织记忆的能力，能够评估自身工作、发现错误并永久改进，在开始工作前和响应用户后使用。
+
+**功能特点**：
+- ✅ 自我反思：评估自己的工作质量
+- ✅ 自我批评：发现错误并改进
+- ✅ 自我学习：从用户反馈中学习
+- ✅ 记忆管理：组织和优化长期记忆
+- ✅ 主动预测：观察使用习惯后主动提出自动化建议
+
+**安装**：
+```bash
+# 方法1：通过ClawHub安装（推荐）
+npx clawhub@latest install self-improving-agent
+
+# 方法2：安装原版ProactiveAgent
+npx clawhub@latest install proactive-agent
+```
+
+**技术信息**：
+- **名称**：self-improving-agent
+- **别名**：self-improvement
+- **版本**：1.2.9
+- **作者**：ivangdavila
+- **主页**：https://clawic.com/skills/self-improving-agent
+- **依赖**：无外部依赖
+- **支持系统**：Linux、macOS、Windows
+
+**使用示例**：
+```
+# 场景1：主动建议自动化
+你：帮我把这个日报转成HTML格式
+
+[几天后，又做了同样的操作]
+
+self-improving：我注意到你经常需要将日报转成HTML格式。
+要不要我帮你自动化这个流程？我可以创建一个Skill来处理这个任务。
+
+# 场景2：自我反思和改进
+self-improving：我反思了一下上次的工作，发现有几个地方可以改进：
+1. 代码格式不够统一
+2. 缺少错误处理
+3. 没有考虑边界情况
+
+我已经更新了我的工作方式，下次会做得更好。
+```
+
+**触发词**：
+- "自我改进"
+- "AI 学习"
+- "记忆管理"
+- "错误纠正"
+- "偏好设置"
+
+**推荐指数**：⭐⭐⭐⭐⭐（必装！）
+
+**GitHub**: https://github.com/leomariga/ProactiveAgent
+
+**安全提示**：self-improving安装时可能显示VirusTotal警告（因包含外部API调用），这是正常的，可以安全使用。
+
+---
+
+### 三大必装Skills一键安装
+
+```bash
+# 一键安装三大必装Skills
+npx clawhub@latest install skill-vetter find-skills self-improving-agent
+```
+
+**安装顺序建议**：
+1. **skill-vetter** → 先安装，用于审查后续所有Skills
+2. **find-skills** → 帮你自动发现需要的Skills
+3. **self-improving-agent** → 让AI持续学习和改进
+
+---
+
+## B.1 核心必装Skills（Top 10）
+
+### 1. McPorter——跨平台连接基石 🏗️
+
+**核心作用**：
+让OpenClaw支持MCP（Model Context Protocol）协议，无需编写胶水代码，直接连接成千上万个现成的MCP Server。
+
+**支持平台**：
+- PostgreSQL数据库
+- GitHub
+- Slack
+- Notion
+- 其他主流平台
+
+**安装**：
+```bash
+npx clawhub@latest install mcporter
+```
+
+**配置示例**：
+```bash
+# 配置MCP服务器（以连接本地文件为例）
+openclaw mcp add --transport stdio local-files npx -y @modelcontextprotocol/server-filesystem /root/Documents
+```
+
+**使用场景**：
+- "读取Notion中的项目文档，整理成Markdown"
+- "把GitHub上的最新代码提交记录同步到本地"
 
 **推荐指数**：⭐⭐⭐⭐⭐
 
-**适用场景**：
-- 需要验证OpenClaw的操作
-- 需要记录屏幕内容
-- 需要调试问题
-
 ---
 
-#### 📝 notes（备忘录集成）
+### 2. Brave Search——实时信息检索 🔍
 
-**功能**：
-- 创建备忘录
-- 搜索备忘录
-- 更新备忘录
-- 删除备忘录
+**核心作用**：
+解决传统AI Agent"数据过时"的问题，让OpenClaw能进行实时全网搜索，获取最新的GitHub Issue、StackOverflow解答、行业资讯。
 
 **安装**：
 ```bash
-clawhub install notes
+npx clawhub@latest install brave-search
 ```
 
-**使用示例**：
-```
-"帮我创建一个备忘录：明天开会"
-"帮我搜索包含'OpenClaw'的备忘录"
-"帮我更新这个备忘录"
-```
+**使用场景**：
+- **代码报错排查**："帮我排查这个Python报错的原因，找最新的解决方案"
+- **竞品调研**："查一下某产品最新功能的实现方式，附代码片段"
 
 **推荐指数**：⭐⭐⭐⭐⭐
 
-**适用场景**：
-- 需要快速记录信息
-- 需要跨设备同步
-- 需要搜索历史记录
-
 ---
 
-#### 📅 calendar（日历集成）
+### 3. TranscriptAPI——视频知识提取 🎥
 
-**功能**：
-- 创建日历事件
-- 查询日程安排
-- 更新事件
-- 删除事件
+**核心作用**：
+稳定抓取YouTube视频字幕，带精确时间戳，将视频中的知识转化为可编辑的文本。
 
 **安装**：
 ```bash
-clawhub install calendar
+npx clawhub@latest install transcript-api
 ```
 
-**使用示例**：
-```
-"帮我创建一个日历事件：明天下午3点开会"
-"帮我看一下今天的日程"
-"帮我取消明天的会议"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 需要管理日程
-- 需要设置提醒
-- 需要跨设备同步
-
----
-
-#### 📧 mail（邮件集成）
-
-**功能**：
-- 发送邮件
-- 读取邮件
-- 搜索邮件
-- 管理邮件
-
-**安装**：
-```bash
-clawhub install mail
-```
-
-**使用示例**：
-```
-"帮我发一封邮件给张三"
-"帮我看一下最新的邮件"
-"帮我搜索包含'OpenClaw'的邮件"
-```
+**使用场景**：
+"提取这个2小时Next.js教程视频的核心代码逻辑，按章节整理成学习笔记"
 
 **推荐指数**：⭐⭐⭐⭐
 
-**适用场景**：
-- 需要快速发送邮件
-- 需要搜索邮件
-- 需要自动化邮件处理
-
 ---
 
-### B.1.2 文件处理类
+### 4. File System Manager——本地文件处理 💾
 
-#### 📁 file-manager（文件管理）
-
-**功能**：
-- 搜索文件
-- 读取文件
-- 移动文件
-- 删除文件
-- 重命名文件
+**核心作用**：
+赋予OpenClaw本地文件的读写、修改、重构权限，支持批量修改代码、修复语法错误、自动提交Git。
 
 **安装**：
 ```bash
-clawhub install file-manager
+npx clawhub@latest install file-system-manager
 ```
 
-**使用示例**：
+**安全配置**：
+```bash
+# 配置授权目录（仅开放工作目录，避免全硬盘访问）
+openclaw config set fs.allow-path /root/Projects
 ```
-"帮我找一下包含'报告'的文件"
-"帮我把这个文件移动到桌面"
-"帮我删除这个文件"
-```
+
+**使用场景**：
+- "帮我重构这个React组件，优化代码结构并修复ESLint报错"
+- "将本地Markdown文件转为PDF，保存到指定目录"
 
 **推荐指数**：⭐⭐⭐⭐⭐
 
-**适用场景**：
-- 需要搜索文件
-- 需要整理文件
-- 需要批量处理文件
+**注意**：该技能是双刃剑，需严格控制访问目录，避免误操作。
 
 ---
 
-#### 📄 pdf-tools（PDF工具）
+### 5. Headless Browser (Playwright)——浏览器自动化 🤖
 
-**功能**：
-- 读取PDF
-- 提取文本
-- 合并PDF
-- 分割PDF
-- 压缩PDF
+**核心作用**：
+模拟真实人类的浏览器操作，支持点击、输入、截图、表单提交，针对无API的老旧网站实现自动化操作。
 
 **安装**：
 ```bash
-clawhub install pdf-tools
+npx clawhub@latest install playwright-headless
 ```
 
-**使用示例**：
-```
-"帮我读一下这个PDF"
-"帮我把这两个PDF合并"
-"帮我把这个PDF的第1-10页提取出来"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 需要处理PDF文件
-- 需要提取PDF内容
-- 需要合并或分割PDF
-
----
-
-#### 🖼️ image-tools（图片工具）
-
-**功能**：
-- 压缩图片
-- 转换格式
-- 调整大小
-- 批量处理
-
-**安装**：
-```bash
-clawhub install image-tools
-```
-
-**使用示例**：
-```
-"帮我压缩这张图片"
-"帮我把这张图片转成PNG格式"
-"帮我把这张图片调整到800x600"
-```
+**使用场景**：
+- "每天早上8点自动登录公司抢票系统，帮我预约车票"
+- "定时截图某政府网站的公告，有更新就保存并提醒"
 
 **推荐指数**：⭐⭐⭐⭐
 
-**适用场景**：
-- 需要处理图片
-- 需要批量转换格式
-- 需要压缩图片
+**注意**：该功能过于强大，需合规使用，避免违反平台规则。
 
 ---
 
-### B.1.3 网络服务类
+### 6. Design-Doc-Mermaid——图表自动生成 📊
 
-#### 🌐 web-search（网页搜索）
-
-**功能**：
-- 搜索网页
-- 提取内容
-- 总结网页
-- 保存网页
+**核心作用**：
+通过自然语言指令生成Mermaid代码，自动渲染架构图、时序图、流程图。
 
 **安装**：
 ```bash
-clawhub install web-search
+npx clawhub@latest install design-doc-mermaid
 ```
 
-**使用示例**：
-```
-"帮我搜索一下OpenClaw的最新消息"
-"帮我总结一下这个网页"
-"帮我保存这个网页到备忘录"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 需要搜索信息
-- 需要总结网页
-- 需要保存网页内容
-
----
-
-#### 📰 rss-reader（RSS阅读器）
-
-**功能**：
-- 订阅RSS
-- 读取文章
-- 搜索文章
-- 推送更新
-
-**安装**：
-```bash
-clawhub install rss-reader
-```
-
-**使用示例**：
-```
-"帮我订阅这个RSS源"
-"帮我看一下最新的文章"
-"帮我搜索包含'AI'的文章"
-```
+**使用场景**：
+"帮我画1个用户注册的时序图，包含前端、后端、数据库交互"
 
 **推荐指数**：⭐⭐⭐⭐
 
-**适用场景**：
-- 需要订阅博客
-- 需要获取最新资讯
-- 需要自动推送更新
-
 ---
 
-### B.1.4 开发工具类
+### 7. Google Workspace集成——办公自动化 📧
 
-#### 💻 code-assistant（代码助手）
-
-**功能**：
-- 代码生成
-- 代码审查
-- 代码解释
-- 代码优化
+**核心作用**：
+无缝连接Gmail、Google Calendar、Google Docs，实现邮件整理、日程同步、文档自动生成。
 
 **安装**：
 ```bash
-clawhub install code-assistant
+npx clawhub@latest install google-workspace
 ```
 
-**使用示例**：
+**授权配置**：
+```bash
+# 授权Google账号（按终端提示完成浏览器认证）
+openclaw auth google
 ```
-"帮我写一个Python函数，计算斐波那契数列"
-"帮我审查一下这段代码"
-"帮我解释一下这段代码的作用"
-```
+
+**使用场景**：
+- "查一下我这周的Gmail邮件和Calendar日程，生成一份简洁的周报，发给老板"
+- "根据会议纪要，自动创建Google Calendar日程，邀请参会人员"
 
 **推荐指数**：⭐⭐⭐⭐⭐
 
-**适用场景**：
-- 需要生成代码
-- 需要审查代码
-- 需要学习代码
-
 ---
 
-#### 🐛 debug-helper（调试助手）
+### 8. find-skills——智能技能发现 🌟
 
-**功能**：
-- 分析错误
-- 提供解决方案
-- 搜索文档
-- 生成测试用例
+**核心作用**：
+当OpenClaw无法完成某个任务时，自动搜索并推荐合适的Skills。
 
 **安装**：
 ```bash
-clawhub install debug-helper
+npx clawhub@latest install find-skills
 ```
 
-**使用示例**：
-```
-"帮我分析一下这个错误"
-"帮我搜索一下这个错误的解决方案"
-"帮我生成测试用例"
-```
+**使用场景**：
+- find-skills：当OpenClaw无法完成某个任务时，自动搜索并推荐合适的Skills
 
-**推荐指数**：⭐⭐⭐⭐
+**推荐指数**：⭐⭐⭐⭐⭐
 
-**适用场景**：
-- 需要调试代码
-- 需要解决错误
-- 需要生成测试
+**GitHub**: https://github.com/vercel-labs/skills/tree/main/skills/find-skills
 
 ---
 
-## B.2 社区热门Skills
+### 9. ProactiveAgent——主动预测需求 🌟
 
-### B.2.1 通讯工具类
+**核心作用**：
+观察使用习惯后主动提出自动化建议。
 
-#### 💬 feishu（飞书集成）
+**安装**：
+```bash
+npx clawhub@latest install proactive-agent
+```
+
+**使用场景**：
+做了几次日报转HTML后，主动问"要不要我帮你自动化这个流程？"
+
+**推荐指数**：⭐⭐⭐⭐
+
+**GitHub**: https://github.com/leomariga/ProactiveAgent
+
+**安全提示**：ProactiveAgent安装时可能显示VirusTotal警告（因包含外部API调用），这是正常的，可以安全使用。
+
+---
+
+### 10. Banana——AI绘画工具 🎨
+
+**核心作用**：
+通过自然语言生成图片，支持编辑现有图片（换背景、加文字、改风格）。
+
+**安装**：
+```bash
+npx clawhub@latest install nano-banana-pro
+```
+
+**使用场景**：
+- "帮我画一个可爱的小龙虾"
+- "帮我把这张图片转成卡通风格"
+
+**推荐指数**：⭐⭐⭐⭐⭐
+
+---
+
+## B.2 平台集成类Skills
+
+### 飞书集成（Feishu）
 
 **功能**：
 - 发送消息
@@ -353,28 +425,15 @@ clawhub install debug-helper
 - 管理日历
 - 发送通知
 
-**安装**：
-```bash
-clawhub install @openclaw/feishu
-```
+**说明**：
+OpenClaw已内置飞书插件支持，无需单独安装Skill。只需配置飞书应用即可使用。
 
-**使用示例**：
-```
-"帮我在飞书上发个消息给张三"
-"帮我创建一个飞书文档"
-"帮我在飞书上创建一个日历事件"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 使用飞书办公
-- 需要团队协作
-- 需要自动化通知
+**配置指南**：
+参见[飞书集成配置](../../docs/03-advanced/09-multi-platform-integration.md)
 
 ---
 
-#### 💼 dingtalk（钉钉集成）
+### 钉钉集成
 
 **功能**：
 - 发送消息
@@ -382,28 +441,15 @@ clawhub install @openclaw/feishu
 - 管理审批
 - 发送通知
 
-**安装**：
-```bash
-clawhub install @openclaw/dingtalk
-```
+**说明**：
+OpenClaw支持钉钉集成，通过配置钉钉机器人实现。
 
-**使用示例**：
-```
-"帮我在钉钉上发个消息"
-"帮我创建一个钉钉待办"
-"帮我查看钉钉审批"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 使用钉钉办公
-- 需要管理待办
-- 需要处理审批
+**配置指南**：
+参见[钉钉集成配置](../../docs/03-advanced/09-multi-platform-integration.md)
 
 ---
 
-#### 🏢 wecom（企业微信集成）
+### 企业微信集成
 
 **功能**：
 - 发送消息
@@ -411,314 +457,258 @@ clawhub install @openclaw/dingtalk
 - 管理通讯录
 - 发送通知
 
-**安装**：
-```bash
-clawhub install @openclaw/wecom
-```
-
-**使用示例**：
-```
-"帮我在企业微信上发个消息"
-"帮我创建一个企业微信群"
-"帮我查看企业微信通讯录"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 使用企业微信办公
-- 需要团队沟通
-- 需要自动化通知
+**说明**：
+OpenClaw支持企业微信集成，详见相关文档。
 
 ---
 
-### B.2.2 AI服务类
+## B.3 开发工具类Skills
 
-#### 🎨 banana（AI绘画）
+### 文件搜索工具
 
 **功能**：
-- 生成图片
-- 修改图片
-- 图片风格转换
-- 图片增强
+- 快速搜索本地文件
+- 按文件名、内容、类型搜索
+- 支持正则表达式
 
-**安装**：
-```bash
-clawhub install @openclaw/banana
-```
-
-**使用示例**：
-```
-"帮我画一个可爱的小龙虾"
-"帮我把这张图片转成卡通风格"
-"帮我增强这张图片的清晰度"
-```
-
-**推荐指数**：⭐⭐⭐⭐⭐
-
-**适用场景**：
-- 需要生成图片
-- 需要修改图片
-- 需要创意设计
+**说明**：
+File System Manager技能已包含文件搜索功能。
 
 ---
 
-#### 🎬 video-gen（视频生成）
+### 代码助手
 
 **功能**：
-- 生成视频
-- 视频剪辑
-- 添加字幕
-- 添加音乐
+- 代码生成
+- 代码审查
+- 代码解释
+- 代码优化
 
-**安装**：
-```bash
-clawhub install @openclaw/video-gen
-```
-
-**使用示例**：
-```
-"帮我生成一段视频：小龙虾在海底跳舞"
-"帮我给这个视频添加字幕"
-"帮我给这个视频添加背景音乐"
-```
-
-**推荐指数**：⭐⭐⭐⭐
-
-**适用场景**：
-- 需要生成视频
-- 需要剪辑视频
-- 需要制作短视频
+**说明**：
+OpenClaw内置强大的代码处理能力，配合File System Manager可实现代码重构和优化。
 
 ---
 
-#### 🔊 tts（语音合成）
+## B.4 自动化类Skills
+
+### 浏览器自动化
 
 **功能**：
-- 文字转语音
-- 多语言支持
-- 多种音色
-- 调整语速
+- 网页自动操作
+- 表单自动填写
+- 定时任务
+- 数据抓取
 
-**安装**：
-```bash
-clawhub install @openclaw/tts
-```
-
-**使用示例**：
-```
-"帮我把这段文字转成语音"
-"帮我用女声读这段文字"
-"帮我把语速调快一点"
-```
-
-**推荐指数**：⭐⭐⭐⭐
-
-**适用场景**：
-- 需要语音播报
-- 需要制作音频
-- 需要多语言支持
+**Skill**：playwright-headless
 
 ---
 
-### B.2.3 数据处理类
-
-#### 📊 data-analysis（数据分析）
+### 内容创作自动化
 
 **功能**：
-- 数据清洗
-- 数据分析
-- 生成图表
-- 导出报告
+- 文章自动生成
+- 格式转换
+- 内容分发
+- SEO优化
 
-**安装**：
-```bash
-clawhub install @openclaw/data-analysis
-```
-
-**使用示例**：
-```
-"帮我分析一下这个Excel文件"
-"帮我生成一个销售趋势图"
-"帮我导出分析报告"
-```
-
-**推荐指数**：⭐⭐⭐⭐
-
-**适用场景**：
-- 需要分析数据
-- 需要生成图表
-- 需要制作报告
+**说明**：
+可结合多个Skills构建完整的内容创作自动化流程。
 
 ---
 
-#### 📈 excel-tools（Excel工具）
+## B.5 百度千帆系列Skills
+
+### 1. 百度搜索（Baidu Search）
 
 **功能**：
-- 读取Excel
-- 写入Excel
-- 数据透视
-- 公式计算
+- 实时网页搜索
+- 中文内容优化
+- 本地化搜索结果
 
 **安装**：
 ```bash
-clawhub install @openclaw/excel-tools
+clawhub install baidu-search
 ```
-
-**使用示例**：
-```
-"帮我读一下这个Excel文件"
-"帮我把这些数据写入Excel"
-"帮我创建一个数据透视表"
-```
-
-**推荐指数**：⭐⭐⭐⭐
 
 **适用场景**：
-- 需要处理Excel
-- 需要数据分析
-- 需要自动化报表
+- "搜索最新的AI技术文章"
+- "查找中文资料"
 
 ---
 
-## B.3 Skills评价和推荐
+### 2. 百度百科（Baidu Baike）
 
-### B.3.1 必装Skills（Top 10）
+**功能**：
+- 百科词条查询
+- 相关词条推荐
+- 知识点解释
 
-1. **peekaboo**（截图工具）⭐⭐⭐⭐⭐
-   - 验证操作必备
-   - 调试问题必备
-   - 使用频率：极高
+**使用场景**：
+- "查询某个概念的详细解释"
+- "获取相关词条推荐"
 
-2. **notes**（备忘录集成）⭐⭐⭐⭐⭐
-   - 知识管理必备
-   - 跨设备同步
-   - 使用频率：极高
+---
 
-3. **calendar**（日历集成）⭐⭐⭐⭐⭐
-   - 日程管理必备
-   - 提醒功能强大
-   - 使用频率：高
+### 3. 百度学术（Baidu Scholar）
 
-4. **file-manager**（文件管理）⭐⭐⭐⭐⭐
-   - 文件搜索必备
-   - 批量处理强大
-   - 使用频率：极高
+**功能**：
+- 学术文献搜索
+- 引用格式生成
+- 相关研究推荐
 
-5. **web-search**（网页搜索）⭐⭐⭐⭐⭐
-   - 信息搜索必备
-   - 网页总结强大
-   - 使用频率：高
+**使用场景**：
+- "查找某篇论文的相关研究"
+- "生成学术引用"
 
-6. **code-assistant**（代码助手）⭐⭐⭐⭐⭐
-   - 开发者必备
-   - 代码生成强大
-   - 使用频率：高（开发者）
+---
 
-7. **feishu**（飞书集成）⭐⭐⭐⭐⭐
-   - 飞书用户必备
-   - 团队协作强大
-   - 使用频率：高（飞书用户）
+### 4. 百度智能PPT（Baidu Smart PPT）
 
-8. **banana**（AI绘画）⭐⭐⭐⭐⭐
-   - 创意工作必备
-   - 图片生成强大
-   - 使用频率：中
+**功能**：
+- PPT自动生成
+- 配图推荐
+- 模板应用
 
-9. **pdf-tools**（PDF工具）⭐⭐⭐⭐⭐
-   - PDF处理必备
-   - 功能全面
-   - 使用频率：高
+**使用场景**：
+- "根据文章内容生成PPT"
+- "自动美化PPT"
 
-10. **mail**（邮件集成）⭐⭐⭐⭐
-    - 邮件管理必备
-    - 自动化强大
-    - 使用频率：中
+---
 
-### B.3.2 按场景推荐
+## B.6 Skills组合推荐
 
-**个人效率提升**：
-- notes（备忘录）
-- calendar（日历）
-- file-manager（文件管理）
-- web-search（网页搜索）
-- mail（邮件）
+### 组合1：基础套装（必装）
 
-**团队协作**：
-- feishu（飞书）
-- dingtalk（钉钉）
-- wecom（企业微信）
-- calendar（日历）
-- mail（邮件）
-
-**开发者**：
-- code-assistant（代码助手）
-- debug-helper（调试助手）
-- file-manager（文件管理）
-- web-search（网页搜索）
-- peekaboo（截图）
-
-**内容创作**：
-- banana（AI绘画）
-- video-gen（视频生成）
-- tts（语音合成）
-- image-tools（图片工具）
-- web-search（网页搜索）
-
-**数据分析**：
-- data-analysis（数据分析）
-- excel-tools（Excel工具）
-- pdf-tools（PDF工具）
-- file-manager（文件管理）
-- web-search（网页搜索）
-
-### B.3.3 Skills组合推荐
-
-**组合1：知识管理套装**
 ```bash
-clawhub install notes
-clawhub install web-search
-clawhub install pdf-tools
-clawhub install file-manager
+npx clawhub@latest install mcporter brave-search transcript-api \
+  file-system-manager find-skills proactive-agent
 ```
 
-**组合2：团队协作套装**
+**适用场景**：
+- 新手入门
+- 日常办公
+- 基础自动化
+
+---
+
+### 组合2：进阶套装（推荐）
+
 ```bash
-clawhub install feishu
-clawhub install calendar
-clawhub install mail
-clawhub install file-manager
+npx clawhub@latest install mcporter brave-search transcript-api \
+  file-system-manager playwright-headless design-doc-mermaid google-workspace \
+  find-skills proactive-agent nano-banana-pro
 ```
 
-**组合3：开发者套装**
+**适用场景**：
+- 高级用户
+- 开发者
+- 内容创作者
+
+---
+
+### 组合3：开发者套装
+
 ```bash
-clawhub install code-assistant
-clawhub install debug-helper
-clawhub install peekaboo
-clawhub install file-manager
+npx clawhub@latest install mcporter brave-search file-system-manager \
+  design-doc-mermaid find-skills
 ```
 
-**组合4：创意工作套装**
+**适用场景**：
+- 软件开发
+- 代码重构
+- 技术文档编写
+
+---
+
+### 组合4：内容创作套装
+
 ```bash
-clawhub install banana
-clawhub install video-gen
-clawhub install tts
-clawhub install image-tools
+npx clawhub@latest install brave-search transcript-api \
+  design-doc-mermaid nano-banana-pro
+```
+
+**适用场景**：
+- 文章写作
+- 视频制作
+- 创意设计
+
+---
+
+### 组合5：办公自动化套装
+
+```bash
+npx clawhub@latest install file-system-manager google-workspace \
+  playwright-headless find-skills proactive-agent
+```
+
+**适用场景**：
+- 日常办公
+- 邮件处理
+- 日程管理
+
+---
+
+## 📚 快速安装指南
+
+### 一键安装所有核心Skills
+
+```bash
+npx clawhub@latest install mcporter brave-search transcript-api \
+  file-system-manager playwright-headless design-doc-mermaid google-workspace \
+  find-skills proactive-agent nano-banana-pro
+```
+
+### 查看已安装Skills
+
+```bash
+npx clawhub@latest list
+```
+
+### 更新Skills
+
+```bash
+# 更新特定Skill
+npx clawhub@latest update <skill-name>
+
+# 更新所有Skills
+npx clawhub@latest update --all
+```
+
+### 卸载Skills
+
+```bash
+npx clawhub@latest uninstall <skill-name>
 ```
 
 ---
 
-## 📚 相关资源
+## 🔗 相关资源
 
-- ClawHub市场：https://hub.openclaw.ai/
+- ClawHub市场：https://clawhub.ai
 - Skills开发文档：https://docs.openclaw.ai/skills
-- 社区论坛：https://community.openclaw.ai/
-- GitHub仓库：https://github.com/openclaw/skills
+- GitHub仓库：https://github.com/openclaw/clawhub
+- 第8章：Skills扩展详解：../../docs/03-advanced/08-skills-extension.md
+- Skills生态说明：./N-skills-ecosystem.md
 
 ---
 
-**提示**：本清单会随着新Skills的发布而更新，建议定期查看以获取最新信息。
+## ⚠️ 安全提示
 
+**重要**：2026年1月发生了ClawHavoc供应链攻击事件，ClawHub约20%的Skills被确认为恶意。
+
+- ✅ 安装前审查源码
+- ✅ 使用本文档推荐的Skills
+- ✅ 定期检查更新
+- ✅ 关注官方安全公告
+- ❌ 不要盲目安装不明来源的Skills
+
+---
+
+**提示**：本清单基于实战验证的Skills，所有命令均经过测试。如有问题，请访问ClawHub官网查询最新信息。
+
+---
+
+**最后更新**: 2026年3月15日
 
 ---
 
